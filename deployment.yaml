@@ -24,7 +24,7 @@ resources:
 - name: msd-api-gateway
   type: compute.v1.firewall
   properties:
-    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
     priority: 1000
     direction: INGRESS
     sourceRanges: 
@@ -38,7 +38,7 @@ resources:
 - name: msd-sishospital-apps
   type: compute.v1.firewall
   properties:
-    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
     priority: 1000
     direction: INGRESS
     sourceTags: 
@@ -52,7 +52,7 @@ resources:
 - name: msd-sishospital-apps-web
   type: compute.v1.firewall
   properties:
-    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
     priority: 1000
     direction: INGRESS
     sourceRanges: 
@@ -66,7 +66,7 @@ resources:
 - name: msd-sishospital-db
   type: compute.v1.firewall
   properties:
-    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
     priority: 1000
     direction: INGRESS
     sourceTags: 
@@ -83,7 +83,7 @@ resources:
   type: compute.v1.router
   properties:
     region: us-central1
-    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
     nats:
     - name: msd-nat
       natIpAllocateOption: AUTO_ONLY
@@ -94,7 +94,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -103,7 +103,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.81
       accessConfigs:
       - name: External NAT
@@ -118,8 +118,8 @@ resources:
           #!/bin/bash
           sudo mkdir /home/labs
           cd /home/labs
-          sudo git clone <UrlGitHub>
-          cd ISIS2503-Microservices-AppDjango
+          sudo git clone https://github.com/Jmi205/Sprint4-SisHospital.git
+          cd Sprint4-SisHospital/historiaClinica
           docker network create kong-net
           docker run -d --name kong --network=kong-net --restart=always \
           -v "$(pwd):/kong/declarative/" -e "KONG_DATABASE=off" \
@@ -131,7 +131,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -140,7 +140,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.82
     tags:
       items: 
@@ -156,7 +156,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -165,7 +165,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.83
     tags:
       items: 
@@ -181,7 +181,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -190,7 +190,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.86
     tags:
       items: 
@@ -210,7 +210,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -219,7 +219,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.84
       accessConfigs:
       - name: External NAT
@@ -234,14 +234,14 @@ resources:
           #!/bin/bash
           sudo mkdir /home/labs
           cd /home/labs
-          sudo git clone <UrlGitHub>
-          cd <rootProject>/paciente
+          sudo git clone https://github.com/Jmi205/Sprint4-SisHospital.git
+          cd Sprint4-SisHospital/paciente
 
 - name: msd-eventosMedicos-ms
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -250,7 +250,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.85
       accessConfigs:
       - name: External NAT
@@ -267,8 +267,8 @@ resources:
           sudo apt install python3-pip -y
           sudo mkdir /home/labs
           cd /home/labs
-          sudo git clone <UrlGitHub>
-          cd <rootProject>/eventoMedico
+          sudo git clone https://github.com/Jmi205/Sprint4-SisHospital.git
+          cd Sprint4-SisHospital/eventoMedico
           sudo pip3 install -r requirements.txt
           sudo python3 manage.py makemigrations
           sudo python3 manage.py migrate
@@ -277,7 +277,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/sistemahospital/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -286,7 +286,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/sistemahospital/global/networks/default
       networkIP: 10.128.0.87
       accessConfigs:
       - name: External NAT
@@ -307,6 +307,6 @@ resources:
           sudo curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
           sudo mkdir /home/labs
           cd /home/labs
-          sudo git clone <UrlGitHub>
-          cd <rootProject>/historiaClinica
+          sudo git clone https://github.com/Jmi205/Sprint4-SisHospital.git
+          cd Sprint4-SisHospital/historiaClinica
           sudo python3.12 -m pip install -r requirements.txt
