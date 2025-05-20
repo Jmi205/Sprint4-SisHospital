@@ -237,7 +237,7 @@ resources:
           sudo git clone https://github.com/Jmi205/Sprint4-SisHospital.git
           cd Sprint4-SisHospital/paciente
 
-- name: msd-eventosMedicos-ms
+- name: msd-eventosmedicos-ms
   type: compute.v1.instance
   properties:
     zone: us-central1-a
