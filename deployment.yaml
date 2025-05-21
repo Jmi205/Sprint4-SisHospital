@@ -152,7 +152,7 @@ resources:
           #!/bin/bash
           docker run --restart=always -d -e POSTGRES_USER=pacientes_user -e POSTGRES_DB=pacientes_db -e POSTGRES_PASSWORD=isis2503 -p 5432:5432 --name pacientes-db postgres
 
-- name: msd-eventosMedicos-db
+- name: msd-eventosmedicos-db
   type: compute.v1.instance
   properties:
     zone: us-central1-a

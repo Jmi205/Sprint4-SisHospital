@@ -81,14 +81,13 @@ WSGI_APPLICATION = 'sisHospital.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME' : 'sishospitaldb',
-        'USER' : 'error404_user', 
-        'PASSWORD' : 'Contra404',
-        'HOST': '10.128.0.2',
-        'PORT' : '5432'
+        'NAME': os.environ.get("MEASUREMENTS_DB", "eventosmedicos_db"),
+        'USER': os.environ.get("MEASUREMENTS_DB_USER", "eventosmedicos_user"),
+        'PASSWORD': os.environ.get("MEASUREMENTS_DB_PASSWD", "isis2503"),
+        'HOST': os.environ.get("MEASUREMENTS_DB_HOST", "10.128.0.83"),
+        'PORT': os.environ.get("MEASUREMENTS_DB_PORT", "5432")
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
